@@ -3,6 +3,9 @@ package com.bread.realworld;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * @author bread
+ */
 @SpringBootApplication
 public class RealworldApplication {
 

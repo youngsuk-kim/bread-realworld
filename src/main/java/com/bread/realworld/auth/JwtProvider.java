@@ -20,8 +20,8 @@ public class JwtProvider {
     private final long validityInMilliseconds;
 
     public JwtProvider(
-            @Value("${jwt.secret-key}") String secretKey,
-            @Value("${jwt.token.expire-length}") long validityInMilliseconds
+            @Value("${jwt.secret-key}") final String secretKey,
+            @Value("${jwt.expire-length}") final long validityInMilliseconds
     ) {
         this.secretKey = Keys.hmacShaKeyFor(secretKey.getBytes(StandardCharsets.UTF_8));
         this.validityInMilliseconds = validityInMilliseconds;

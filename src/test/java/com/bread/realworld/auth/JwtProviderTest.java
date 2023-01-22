@@ -3,6 +3,8 @@ package com.bread.realworld.auth;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 public class JwtProviderTest {
     @Test
     void create() {
@@ -13,7 +15,7 @@ public class JwtProviderTest {
         String jwt = new JwtProvider(testSecretKey, validityInMilliseconds)
                 .create(testUserId);
 
-        Assertions.assertThat(JwtVerifier.execute(jwt, testSecretKey,testUserId))
+        assertThat(JwtVerifier.execute(new JwtVerifierDto(jwt, testSecretKey, testUserId)))
                 .isTrue();
     }
 }

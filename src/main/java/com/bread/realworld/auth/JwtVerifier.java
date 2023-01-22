@@ -12,15 +12,17 @@ import java.nio.charset.StandardCharsets;
  */
 public class JwtVerifier {
 
-    public static boolean execute(String jws, String secretKey, String userId) {
-        final SecretKey key = Keys.hmacShaKeyFor(secretKey.getBytes(StandardCharsets.UTF_8));
+    private JwtVerifier() {}
+
+    public static boolean execute(JwtVerifierDto jwtVerifierDto) {
+        final SecretKey key = Keys.hmacShaKeyFor(jwtVerifierDto.getSecretKey().getBytes(StandardCharsets.UTF_8));
 
         final Claims body = Jwts.parserBuilder()
                 .setSigningKey(key)
                 .build()
-                .parseClaimsJws(jws)
+                .parseClaimsJws(jwtVerifierDto.getJws())
                 .getBody();
 
-        return body.getId().equals(userId);
+        return body.getId().equals(jwtVerifierDto.getUserId());
     }
 }

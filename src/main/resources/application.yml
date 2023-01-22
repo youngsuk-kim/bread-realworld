@@ -8,3 +8,7 @@ spring:
     database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
       ddl-auto: create
+
+jwt:
+  secret-key: bread-youngsuk-kim-secret-key-value
+  expire-length: 100000
