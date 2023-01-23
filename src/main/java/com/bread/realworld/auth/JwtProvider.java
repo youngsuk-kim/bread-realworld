@@ -26,12 +26,12 @@ public class JwtProvider {
     this.validityInMilliseconds = validityInMilliseconds;
   }
 
-  public String create(String userId) {
+  public String create(String userEmail) {
     final Date now = new Date();
     final Date validity = new Date(now.getTime() + validityInMilliseconds);
 
     return Jwts.builder()
-        .setId(userId)
+        .setId(userEmail)
         .signWith(secretKey)
         .setExpiration(validity)
         .compact();
